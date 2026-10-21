@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Permite usar acentos y ñ -->
+    <meta charset="UTF-8">
+
+    <!-- Hace que la página se vea bien en celulares -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título que aparece en la pestaña del navegador -->
+    <title>Entre páginas | Catálogo de libros</title>
+
+    <!-- Fuentes para títulos y texto -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Conecta este HTML con el archivo de estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="#inicio">Entre<span>páginas</span></a>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#Best Seller">Best Seller</a>
+            <a href="#Catalogo">Catálogo</a>
+        </nav>
+    </header>
+
+    <section id="inicio" class="portada">
+        <p class="etiqueta">Una buena historia te encuentra</p>
+        <h1>Abre un libro.<br><span>Encuentra otro mundo.</span></h1>
+        <p>Historias para descubrir, recordar y recomendar. Encuentra aquí tu próxima lectura.</p>
+        <a href="#Catalogo" class="boton">Explorar libros</a>
+    </section>
+
+    <section id="Best Seller" class="destacado" data-product-id="best-seller" data-price="329">
+        <p class="etiqueta">BEST SELLER</p>
+        <div class="destacado-portada">
+            <img src="../../IMG/BS.jpg" alt="Portada del libro El poder del ahora, de Eckhart Tolle">
+        </div>
+        <div class="destacado-info">
+            <h2>El poder del ahora</h2>
+            <p class="datos"><strong>Género:</strong> Libro de autoayuda</p>
+            <p class="datos"><strong>Autor:</strong> Eckhart Tolle</p>
+            <p class="descripcion-destacado">Aborda la forma en que las personas interactúan consigo mismas y con los demás. Presenta el concepto de autorreflexión y presencia en el momento presente, junto con ejercicios sencillos para poner en práctica sus principios.</p>
+            <div class="acciones-libro destacado-acciones">
+                <p class="precio-libro">$329.00 MXN</p>
+                <button class="agregar-carrito agregar-carrito-destacado" type="button">Agregar al carrito</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogo" class="catalogo">
+        <div class="encabezado-catalogo">
+            <p class="etiqueta">Los mejores de todos los tiempos.</p>
+            <h2>Explora nuestro <span>catálogo</span></h2>
+        </div>
+        <div class="contenedor-tarjetas">
+            <article class="tarjeta" data-price="299">
+                <img src="../../IMG/Libro%201.jpg" alt="Portada de 1984, de George Orwell" loading="lazy">
+                <div class="tarjeta-info">
+                    <h3>Don Quijote</h3>
+                    <p class="datos"><strong>Género:</strong> Novela, Sátira, Parodia, Farsa, Novela psicológica</p>
+                    <p class="datos"><strong>Autor:</strong> Miguel de Cervantes</p>
+                    <p> Don Quijote de la Mancha narra la historia de Alonso Quijano, un hidalgo pobre que pierde la razón por leer demasiados libros de caballería y cree ser un caballero medieval.</p>
+                </div>
+                <div class="acciones-libro">
+                    <p class="precio-libro">$299.00 MXN</p>
+                    <button class="agregar-carrito" type="button">Agregar al carrito</button>
+                </div>
+
+            </article>
+            <article class="tarjeta" data-price="189">
+                <img src="../../IMG/Libro%202.jpg" alt="Portada de Orgullo y prejuicio, de Jane Austen" loading="lazy">
+                <div class="tarjeta-info">
+                    <h3>Citas del Presidente Mao Zedong</h3>
+                    <p class="datos"><strong>Género:</strong> Biografía, Historia</p>
+                    <p class="datos"><strong>Autor:</strong> Mao Zedong</p>
+                    <p>También conocido como el Pequeño Libro Rojo o Libro Rojo de Mao, fue un libro publicado en enero de 1964 por el gobierno de la República Popular China en el que se recogen citas y discursos pronunciados por Mao Zedong, que en aquel momento era el presidente del Partido Comunista de China.</p>
+                </div>
+                <div class="acciones-libro">
+                    <p class="precio-libro">$189.00 MXN</p>
+                    <button class="agregar-carrito" type="button">Agregar al carrito</button>
+                </div>
+
+            </article>
+            <article class="tarjeta" data-price="249">
+                <img src="../../IMG/Libro%203.jpg" alt="Portada de Dune, de Frank Herbert" loading="lazy">
+                <div class="tarjeta-info">
+                    <h3>Harry Potter y la Piedra Filosofal</h3>
+                    <p class="datos"><strong>Género:</strong>Novela, Fantasía</p>
+                    <p class="datos"><strong>Autor:</strong> J.K. Rowling</p>
+                    <p>Harry Potter crece en la casa de sus tíos, los Dursley, quienes le ocultan su verdadera historia familiar; al cumplir Harry once años de edad, empiezan a llegarle cartas de remitente desconocido, que van aumentando en número a medida que sus tíos no dejan que las abra. Las mismas traen la noticia de que el niño ha sido admitido en el Colegio Hogwarts de Magia y Hechicería, ya que, al igual que sus padres, es mago.</p>
+                </div>
+                <div class="acciones-libro">
+                    <p class="precio-libro">$249.00 MXN</p>
+                    <button class="agregar-carrito" type="button">Agregar al carrito</button>
+                </div>
+
+            </article>
+            <article class="tarjeta" data-price="219">
+                <img src="../../IMG/Libro%204.jpg" alt="Portada de Cien años de soledad, de Gabriel García Márquez" loading="lazy">
+                <div class="tarjeta-info">
+                    <h3>Historia de dos ciudades</h3>
+                    <p class="datos"><strong>Género:</strong>Novela histórica</p>
+                    <p class="datos"><strong>Autor:</strong> Charles Dickens</p>
+                    <p>se narra la vida en el siglo XVIII, en la época de la Revolución francesa. La historia se desarrolla en dos países: Inglaterra y Francia, y en las ciudades de Londres y París en la época de los albores de la Revolución francesa. La primera ciudad simbolizaría de algún modo la paz y la tranquilidad, la vida sencilla y ordenada; mientras la segunda representaría la agitación, el desafío y el caos, el conflicto entre dos mundos en una época en la que se anuncian drásticos cambios sociales.</p>
+                </div>
+                <div class="acciones-libro">
+                    <p class="precio-libro">$219.00 MXN</p>
+                    <button class="agregar-carrito" type="button">Agregar al carrito</button>
+                </div>
+
+            </article>
+            <article class="tarjeta" data-price="349">
+                <img src="../../IMG/Libro%205.jpg" alt="Portada de Mujercitas, de Louisa May Alcott" loading="lazy">
+                <div class="tarjeta-info">
+                    <h3>El señor de los anillos</h3>
+                    <p class="datos"><strong>Género:</strong> Fantasía heróica</p>
+                    <p class="datos"><strong>Autor:</strong> J. R. R. Tolkein</p>
+                    <p>Su historia se desarrolla en la Tercera Edad del Sol de la Tierra Media, un lugar ficticio poblado por hombres y otras razas antropomorfas, como los hobbits, los elfos o los enanos, así como por muchas otras criaturas reales y fantásticas. La novela narra el viaje del protagonista principal, Frodo Bolsón, hobbit de la Comarca, para destruir el Anillo Único y la consiguiente guerra que provocará el enemigo para recuperarlo, ya que es la principal fuente de poder de su creador, el señor oscuro Sauron.</p>
+                </div>
+                <div class="acciones-libro">
+                    <p class="precio-libro">$349.00 MXN</p>
+                    <button class="agregar-carrito" type="button">Agregar al carrito</button>
+                </div>
+
+            </article>
+            <article class="tarjeta" data-price="279">
+                <img src="../../IMG/Libro%206.jpg" alt="Portada de Harry Potter y la piedra filosofal, de J. K. Rowling" loading="lazy">
+                <div class="tarjeta-info">
+                    <h3>Harry Potter y la piedra filosofal</h3>
+                    <p class="datos"><strong>Género:</strong> Fantasía</p>
+                    <p class="datos"><strong>Autor:</strong> J. K. Rowling</p>
+                    <p>En su primer año en Hogwarts, Harry descubre la magia, encuentra nuevos amigos y empieza a conocer su propio pasado.</p>
+                </div>
+                <div class="acciones-libro">
+                    <p class="precio-libro">$279.00 MXN</p>
+                    <button class="agregar-carrito" type="button">Agregar al carrito</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <footer>
+        <p>Entre páginas · Un buen libro siempre te lleva más lejos.</p>
+    </footer>
+
+    <a class="boton-carrito" id="abrir-carrito" href="carrito.html" target="_blank" rel="noopener" aria-label="Abrir carrito, 0 productos">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M3 3h2l2.2 11.1a2 2 0 0 0 2 1.6h8.9a2 2 0 0 0 1.9-1.4L22 8H6"></path>
+            <circle cx="10" cy="20" r="1"></circle>
+            <circle cx="18" cy="20" r="1"></circle>
+        </svg>
+        <span class="contador-carrito" id="contador-carrito">0</span>
+    </a>
+
+    <script>
+        const cartStorageKey = "entrePaginasCart";
+        const cartCount = document.getElementById("contador-carrito");
+        let cart = [];
+
+        function loadCart() {
+            try {
+                const savedCart = JSON.parse(localStorage.getItem(cartStorageKey) || "[]");
+                return Array.isArray(savedCart) ? savedCart.filter(item => item &&
+                    typeof item.id === "string" && typeof item.title === "string" &&
+                    Number.isFinite(item.price) && Number.isInteger(item.quantity) && item.quantity > 0) : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function renderCartCount() {
+            const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = itemCount;
+            document.getElementById("abrir-carrito").setAttribute(
+                "aria-label", `Abrir carrito, ${itemCount} ${itemCount === 1 ? "producto" : "productos"}`
+            );
+        }
+
+        function addToCart(id, title, price) {
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, title, price, quantity: 1 });
+            }
+            try {
+                localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+            } catch {
+                return;
+            }
+            renderCartCount();
+        }
+
+        cart = loadCart();
+        document.querySelectorAll(".tarjeta").forEach((card, index) => {
+            card.querySelector(".agregar-carrito").addEventListener("click", () => {
+                addToCart(`libro-${index}`, card.querySelector("h3").textContent.trim(), Number(card.dataset.price));
+            });
+        });
+
+        const bestSeller = document.querySelector(".destacado");
+        bestSeller.querySelector(".agregar-carrito").addEventListener("click", () => {
+            addToCart(bestSeller.dataset.productId, bestSeller.querySelector("h2").textContent.trim(), Number(bestSeller.dataset.price));
+        });
+
+        window.addEventListener("storage", event => {
+            if (event.key === cartStorageKey) {
+                cart = loadCart();
+                renderCartCount();
+            }
+        });
+        renderCartCount();
+    </script>
+
+</body>
+
+
+
