@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu carrito | Entre páginas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="pagina-carrito">
+        <a class="volver-catalogo" href="index.html">&larr; Volver al catálogo</a>
+        <p class="etiqueta-carrito">Entre páginas · Seguimiento de compra</p>
+        <h1>Carrito de compras</h1>
+
+        <div class="contenido-carrito">
+            <section class="lista-carrito" id="lista-carrito" aria-label="Libros en el carrito" aria-live="polite"></section>
+            <aside class="resumen-carrito" aria-labelledby="titulo-resumen">
+                <h2 id="titulo-resumen">Resumen de compra</h2>
+                <p class="resumen-total"><span>Total</span><strong id="total-carrito">$0.00 MXN</strong></p>
+                <button class="vaciar-carrito" id="vaciar-carrito" type="button">Vaciar carrito</button>
+            </aside>
+        </div>
+        <div class="accion-pago">
+            <button class="boton-pagar" id="boton-pagar" type="button" disabled>Pagar</button>
+            <p class="mensaje-pago" id="mensaje-pago" role="status" aria-live="polite"></p>
+        </div>
+    </main>
+
+    <script>
+        const cartStorageKey = "entrePaginasCart";
+        const cartList = document.getElementById("lista-carrito");
+        const cartTotal = document.getElementById("total-carrito");
+        const payButton = document.getElementById("boton-pagar");
+        const paymentMessage = document.getElementById("mensaje-pago");
+        const moneyFormat = new Intl.NumberFormat("es-MX", {
+            style: "currency",
+            currency: "MXN"
+        });
+
+        function loadCart() {
+            try {
+                const savedCart = JSON.parse(localStorage.getItem(cartStorageKey) || "[]");
+                return Array.isArray(savedCart) ? savedCart.filter(item => item &&
+                    typeof item.id === "string" && typeof item.title === "string" &&
+                    Number.isFinite(item.price) && Number.isInteger(item.quantity) && item.quantity > 0) : [];
+            } catch {
+                return [];
+            }
+        }
+
+        let cart = loadCart();
+
+        function saveCart() {
+            try {
+                localStorage.setItem(cartStorageKey, JSON.stringify(cart));
+            } catch {
+                return false;
+            }
+            return true;
+        }
+
+        function renderCart() {
+            cartList.replaceChildren();
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            cartTotal.textContent = moneyFormat.format(total);
+            payButton.disabled = cart.length === 0;
+            paymentMessage.textContent = "";
+
+            if (cart.length === 0) {
+                const emptyMessage = document.createElement("p");
+                emptyMessage.className = "carrito-vacio";
+                emptyMessage.textContent = "Tu carrito está vacío.";
+                cartList.append(emptyMessage);
+                return;
+            }
+
+            cart.forEach(item => {
+                const row = document.createElement("article");
+                row.className = "producto-carrito";
+                const details = document.createElement("div");
+                const title = document.createElement("h2");
+                title.textContent = item.title;
+                const quantity = document.createElement("p");
+                quantity.textContent = `${item.quantity} × ${moneyFormat.format(item.price)}`;
+                const removeButton = document.createElement("button");
+                removeButton.className = "eliminar-producto";
+                removeButton.type = "button";
+                removeButton.textContent = "Eliminar";
+                removeButton.setAttribute("aria-label", `Eliminar ${item.title} del carrito`);
+                removeButton.addEventListener("click", () => {
+                    cart = cart.filter(cartItem => cartItem.id !== item.id);
+                    if (saveCart()) renderCart();
+                });
+                details.append(title, quantity);
+                row.append(details, removeButton);
+                cartList.append(row);
+            });
+        }
+
+        document.getElementById("vaciar-carrito").addEventListener("click", () => {
+            cart = [];
+            if (saveCart()) renderCart();
+        });
+
+        payButton.addEventListener("click", () => {
+            if (cart.length > 0) {
+                paymentMessage.textContent = "El pago en línea todavía no está disponible.";
+            }
+        });
+
+        window.addEventListener("storage", event => {
+            if (event.key === cartStorageKey) {
+                cart = loadCart();
+                renderCart();
+            }
+        });
+
+        renderCart();
+    </script>
+</body>
+</html>

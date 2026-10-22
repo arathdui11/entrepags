@@ -1,0 +1,548 @@
+/* =========================================================
+   CÓMO LEER ESTE ARCHIVO
+
+   Cada bloque tiene esta forma:
+
+       selector {
+           propiedad: valor;
+       }
+
+   El selector dice A QUÉ elemento del HTML se aplica.
+   - h1        → todas las etiquetas <h1>
+   - .tarjeta  → todo lo que tenga class="tarjeta"
+   - #inicio   → lo que tenga id="inicio"
+   ========================================================= */
+
+
+/* ---------- GENERAL ---------- */
+
+:root {
+    --paper: #f3f2e9;
+    --ink: #263830;
+    --muted: #53665d;
+    --surface: #fffdf8;
+    --surface-soft: #e6e9e0;
+    --accent: #765056;
+    --accent-hover: #5c3d43;
+    --brass: #b28b4e;
+    --line: #cbd2c8;
+}
+
+/* El * afecta a TODOS los elementos: quita espacios por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Al hacer clic en el menú, la página se desliza suavemente */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:  "Bitter", serif;
+    background-color: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+/* Los títulos usan la fuente estilo póster */
+h1, h2, h3, .logo {
+    font-family:  "Bitter", serif;
+}
+
+/* Las palabras dentro de <span> en los títulos van en rosa */
+h1 span, h2 span, .logo span {
+    color: var(--accent);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Cada sección tiene espacio arriba/abajo y no se pasa de 1100px */
+section {
+    padding: 70px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    font-size: 60px;
+    margin-bottom: 40px;
+}
+
+
+/* ---------- MENÚ ---------- */
+
+header {
+    position: sticky;            /* el menú se queda arriba al bajar */
+    top: 0;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--line);
+
+    display: flex;               /* flex = poner elementos en una fila */
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;             /* si no caben, pasan a otra línea */
+    gap: 30px;
+    padding: 15px 30px;
+}
+
+.logo {
+    font-size: 60px;
+}
+
+nav a {
+    color: var(--ink);
+    margin-left: 20px;
+    font-size: 35px
+}
+
+/* :hover = cuando el mouse está encima */
+nav a:hover {
+    color: var(--accent);
+}
+
+
+/* ---------- PORTADA ---------- */
+
+/* Este selector va solo, sin límite de ancho, para que el fondo llene la pantalla */
+.portada {
+    max-width: none;
+    padding: 120px 30px;
+
+    /* Capa oscura encima de la foto para que el texto se lea */
+    color: #fffdf8;
+    background: linear-gradient(rgba(18, 30, 27, 0.72), rgba(18, 30, 27, 0.72)),
+                url("img/portada.jpg");
+    background-size: cover;      /* la foto cubre todo el espacio */
+    background-position: center;
+}
+
+.portada h1 {
+    font-size: 80px;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.portada h1 span {
+    color: #e8c77b;
+}
+
+.portada p {
+    max-width: 500px;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.boton {
+    display: inline-block;
+    background-color: var(--brass);
+    color: var(--ink);
+    font-weight: bold;
+    font-size: 40px;
+    padding: 20px 40px;
+    border-radius: 8px;
+}
+
+.boton:hover {
+    background-color: var(--accent);
+    color: var(--surface);
+}
+
+.destacado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    text-align: center;
+}
+
+.destacado > .etiqueta {
+    margin-bottom: -8px;
+    color: var(--accent);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.destacado-portada {
+    width: min(100%, 230px);
+}
+
+.destacado-portada img {
+    display: block;
+    width: 100%;
+    height: 320px;
+    margin: 0 auto;
+    border-radius: 6px;
+    object-fit: contain;
+}
+
+.destacado-info {
+    width: min(100%, 800px);
+}
+
+.destacado-info h2 {
+    margin-bottom: 24px;
+    font-size: 56px;
+}
+
+.destacado-info .datos {
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.descripcion-destacado {
+    max-width: 760px;
+    margin: 18px auto 0;
+    font-size: 22px;
+    line-height: 1.7;
+}
+
+.destacado-acciones {
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.destacado-acciones .precio-libro {
+    font-size: 26px;
+}
+
+.agregar-carrito-destacado {
+    min-width: 320px;
+    min-height: 76px;
+    padding: 20px 36px;
+    font-size: 24px;
+}
+
+
+/* ---------- TARJETAS DE PELÍCULAS ---------- */
+
+/* Flexbox pone las tarjetas en fila; flex-wrap las baja de línea si no caben */
+.contenedor-tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tarjeta {
+    width: 320px;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 380px;
+    object-fit: contain;
+    background-color: var(--surface-soft);
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.tarjeta h3 {
+    font-size: 25px;
+}
+
+.datos {
+    color: var(--muted);
+    font-size: 20px;
+}
+
+/* Efecto al pasar el mouse: la tarjeta se levanta y cambia de borde */
+.tarjeta:hover {
+    border-color: var(--accent);
+    transform: translateY(2px);
+}
+
+
+/* ---------- LA DÉCADA ---------- */
+
+#decada p {
+    max-width: 650px;
+    color: var(--muted);
+}
+
+
+/* ---------- PIE DE PÁGINA ---------- */
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--surface-soft);
+    color: var(--muted);
+    font-size: 40px;
+}
+
+
+/* ---------- CARRITO DE COMPRAS ---------- */
+
+.acciones-libro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.precio-libro {
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.agregar-carrito,
+.vaciar-carrito,
+.eliminar-producto {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 14px;
+    background: var(--accent);
+    color: var(--surface);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.agregar-carrito:hover,
+.vaciar-carrito:hover {
+    background: var(--accent-hover);
+}
+
+.boton-carrito {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    border: 2px solid var(--surface);
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--surface);
+    box-shadow: 0 5px 18px rgba(38, 56, 48, 0.25);
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.boton-carrito:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+}
+
+.boton-carrito svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+.contador-carrito {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: grid;
+    place-items: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 5px;
+    border: 2px solid var(--surface);
+    border-radius: 999px;
+    background: var(--brass);
+    color: var(--ink);
+    font: 700 13px/1 "DM Sans", sans-serif;
+}
+
+.pagina-carrito {
+    max-width: 1100px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+.volver-catalogo {
+    display: inline-block;
+    margin-bottom: 48px;
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.volver-catalogo:hover {
+    color: var(--accent-hover);
+}
+
+.pagina-carrito .etiqueta-carrito {
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.pagina-carrito h1 {
+    margin-bottom: 32px;
+    font-size: 52px;
+    line-height: 1.1;
+}
+
+.contenido-carrito {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+    align-items: start;
+    gap: 40px;
+}
+
+.lista-carrito {
+    border-top: 1px solid var(--line);
+}
+
+.producto-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.producto-carrito h2 {
+    margin: 0 0 6px;
+    font-size: 23px;
+}
+
+.producto-carrito p {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.eliminar-producto {
+    flex: 0 0 auto;
+    background: transparent;
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.eliminar-producto:hover {
+    color: var(--accent-hover);
+}
+
+.carrito-vacio {
+    padding: 26px 0;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.resumen-carrito {
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface);
+}
+
+.resumen-carrito h2 {
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    font-size: 18px;
+}
+
+.resumen-total strong {
+    color: var(--accent);
+}
+
+.resumen-carrito .vaciar-carrito {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.accion-pago {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 36px auto 0;
+}
+
+.boton-pagar {
+    width: min(100%, 360px);
+    min-height: 68px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--brass);
+    color: var(--ink);
+    font: 700 24px "DM Sans", sans-serif;
+    cursor: pointer;
+}
+
+.boton-pagar:not(:disabled):hover {
+    background: var(--accent);
+    color: var(--surface);
+}
+
+.boton-pagar:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.mensaje-pago {
+    min-height: 24px;
+    color: var(--accent);
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .boton-carrito {
+        right: 16px;
+        bottom: 16px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .contenido-carrito {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .pagina-carrito {
+        padding: 32px 18px 70px;
+    }
+
+    .pagina-carrito h1 {
+        font-size: 42px;
+    }
+
+    .destacado-info h2 {
+        font-size: 42px;
+    }
+
+    .destacado-portada {
+        width: min(100%, 200px);
+    }
+
+    .destacado-portada img {
+        height: 280px;
+    }
+
+    .agregar-carrito-destacado {
+        width: min(100%, 360px);
+        min-width: 0;
+    }
+}
